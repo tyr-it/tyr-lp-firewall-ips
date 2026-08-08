@@ -228,6 +228,14 @@
     .trad-card h3 { font-size:1rem; font-weight:700; margin-bottom:10px; color:var(--primary-glow); }
     .trad-card p { font-size:.88rem; color:var(--muted); }
 
+    /* ── MINI FORM ── */
+    .mini-form-section { background:linear-gradient(135deg,rgba(193,18,31,.08),rgba(11,15,20,1)); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:56px 0; }
+    .mini-form-inner { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+    .mini-form-left h2 { font-size:clamp(1.4rem,2.5vw,2rem); font-weight:800; margin-bottom:12px; }
+    .mini-form-left p { color:var(--muted); font-size:.95rem; }
+    .mini-form { display:flex; flex-direction:column; gap:12px; }
+    .mini-trust { display:flex; align-items:center; gap:8px; font-size:.8rem; color:var(--muted); margin-top:8px; }
+
     /* ── SOLUÇÃO ── */
     .sol-inner { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
     .sol-definition { background:rgba(193,18,31,.07); border:1px solid rgba(193,18,31,.2); border-radius:var(--radius); padding:24px 28px; margin-bottom:28px; }
@@ -359,7 +367,7 @@
 
     /* ── RESPONSIVE ── */
     @media(max-width:900px) {
-      .hero-content,.sol-inner,.tyr-inner,.contact-inner { grid-template-columns:1fr; }
+      .hero-content,.sol-inner,.tyr-inner,.contact-inner,.mini-form-inner { grid-template-columns:1fr; }
       .nist-grid { grid-template-columns:1fr 1fr; }
       .nist-step:not(:last-child)::after { display:none; }
       .nist-step:first-child,.nist-step:last-child { border-radius:var(--radius); }
@@ -429,7 +437,7 @@
           <span data-i18n="hero.badge">Parceiro Fortinet · Barracuda · DrayTek</span>
         </div>
         <h1 data-i18n="hero.title">Seu Firewall Está Desatualizado. <span class="text-red">Os Ataques Não Estão.</span></h1>
-        <p class="hero-sub" data-i18n="hero.sub">Firewalls tradicionais bloqueiam o que já conhecem. Ameaças modernas — ransomware, exploits de dia-zero, tráfego criptografado malicioso — passam direto. A TYR seleciona, implementa e gerencia o Firewall + IPS certo para o seu porte e orçamento.</p>
+        <p class="hero-sub" data-i18n="hero.sub">Firewalls tradicionais bloqueiam o que já conhecem. Ameaças modernas — ransomware, vírus tão novos que ainda ninguém detectou, tráfego criptografado malicioso — passam direto. A TYR seleciona, implementa e gerencia o Firewall + IPS certo para o seu porte e orçamento.</p>
         <div class="hero-stats">
           <div class="stat">
             <div class="stat-val red">US$10,5 tri</div>
@@ -520,7 +528,7 @@
       <div class="pain-card">
         <div class="pain-icon">👁️‍🗨️</div>
         <h3 data-i18n="pain.c1.title">Ameaças que o Firewall Tradicional Não Vê</h3>
-        <p data-i18n="pain.c1.text">Firewalls antigos filtram por porta e IP, sem inspecionar o conteúdo do tráfego. Ransomware, exploits de dia-zero e tráfego criptografado malicioso passam sem serem notados.</p>
+        <p data-i18n="pain.c1.text">Firewalls antigos filtram por porta e IP, sem inspecionar o conteúdo do tráfego. Ransomware, vírus tão novos que ainda ninguém detectou e tráfego criptografado malicioso passam sem serem notados.</p>
       </div>
       <div class="pain-card">
         <div class="pain-icon">🏬</div>
@@ -580,10 +588,52 @@
   <div class="container">
     <div class="fenrir-callout">
       <span class="fenrir-label" data-i18n="fenrir.label">O Lobo e o Guardião</span>
-      <p data-i18n="fenrir.text">Na mitologia nórdica, Fenrir era o lobo que ameaçava destruir tudo — até que Týr se interpôs, sacrificando a própria mão para acorrentá-lo. No mundo digital, o lobo ataca o perímetro da sua rede: tráfego malicioso disfarçado, exploits de dia-zero, tentativas silenciosas testando cada porta aberta. Um firewall sem IPS ativo é uma corrente frouxa — o lobo passa sem ser notado. A TYR, com Fortinet, Barracuda e DrayTek, escolhe e gerencia a corrente certa para o seu perímetro, no tamanho certo para o seu negócio.</p>
+      <p data-i18n="fenrir.text">Na mitologia nórdica, Fenrir era o lobo que ameaçava destruir tudo — até que Týr se interpôs, sacrificando a própria mão para acorrentá-lo. No mundo digital, o lobo ataca o perímetro da sua rede: tráfego malicioso disfarçado, vírus tão novos que ainda ninguém detectou, tentativas silenciosas testando cada porta aberta. Um firewall sem IPS ativo é uma corrente frouxa — o lobo passa sem ser notado. A TYR, com Fortinet, Barracuda e DrayTek, escolhe e gerencia a corrente certa para o seu perímetro, no tamanho certo para o seu negócio.</p>
     </div>
   </div>
 </section>
+
+
+<!-- MINI FORM -->
+<div class="mini-form-section" id="mini-form">
+  <div class="container">
+    <div class="mini-form-inner">
+      <div class="mini-form-left">
+        <div class="section-label"><span data-i18n="mf.label">Diagnóstico gratuito</span></div>
+        <h2 data-i18n="mf.title">Descubra qual Firewall + IPS cabe no seu porte e orçamento</h2>
+        <p data-i18n="mf.sub">Preencha os campos ao lado e receba um diagnóstico rápido: qual solução de perímetro faz sentido para o seu cenário, com TYR + Fortinet, Barracuda ou DrayTek.</p>
+        <div class="mini-trust" style="margin-top:16px;">
+          <span data-i18n="mf.csat">⭐ CSAT <strong>4,93</strong>/5</span>
+          <span>·</span>
+          <span data-i18n="mf.trust">+20 anos de experiência</span>
+        </div>
+      </div>
+      <div>
+        <form class="mini-form" id="mini-lead-form" onsubmit="submitForm(event,'mini-lead-form','mini-msg','api/contact.php')">
+          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="form.nome">Nome *</label>
+              <input type="text" name="nome" required placeholder="João" data-i18n-placeholder="form.nome_ph">
+            </div>
+            <div class="form-group">
+              <label data-i18n="form.empresa">Empresa *</label>
+              <input type="text" name="empresa" required placeholder="Empresa S/A" data-i18n-placeholder="form.empresa_ph">
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form.email">E-mail Corporativo *</label>
+            <input type="email" name="email" required placeholder="joao@empresa.com.br" data-i18n-placeholder="form.email_ph">
+          </div>
+          <input type="hidden" name="source" value="mini-form-firewall-ips">
+          <button type="submit" class="btn btn-primary" data-i18n="mf.submit">Receber Diagnóstico Agora →</button>
+          <div id="mini-msg" class="form-msg"></div>
+          <p class="form-note" data-i18n="form.privacy_note">Seus dados estão seguros. Ao enviar, você concorda com nossa <a href="https://tyr.digital/politica-de-privacidade/" target="_blank">Política de Privacidade</a>.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- A SOLUÇÃO — FIREWALL + IPS GERENCIADO -->
@@ -646,7 +696,7 @@
       <div class="feat-card">
         <div class="feat-num">02</div>
         <h3 data-i18n="feat.c2.title">Inspeção Avançada Contra Ameaças</h3>
-        <p data-i18n="feat.c2.text">Sandbox, análise comportamental e heurística detectam ransomware e ataques de dia-zero antes que causem dano — mesmo tráfego nunca visto antes.</p>
+        <p data-i18n="feat.c2.text">Um ambiente de teste isolado analisa o comportamento de arquivos suspeitos e detecta ransomware e vírus nunca vistos antes, sem esperar que causem dano.</p>
       </div>
       <div class="feat-card">
         <div class="feat-num">03</div>
