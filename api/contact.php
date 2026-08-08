@@ -16,11 +16,14 @@ function sanitize(string $v, int $max = 200): string {
 
 $nome      = sanitize($_POST['nome']      ?? '');
 $sobrenome = sanitize($_POST['sobrenome'] ?? '');
+$empresa   = sanitize($_POST['empresa']   ?? '');
 $email     = sanitize($_POST['email']     ?? '', 254);
 $tel       = sanitize($_POST['tel']       ?? '', 30);
 $msg       = sanitize($_POST['msg']       ?? '', 2000);
+$source    = sanitize($_POST['source']    ?? '', 60);
 
-if (!$nome || !$email || !$msg) {
+// 'msg' só existe no formulário completo (#contato); o mini-form envia nome+empresa+email
+if (!$nome || !$email) {
     http_response_code(422);
     echo json_encode(['ok' => false, 'error' => 'Missing required fields']);
     exit;
@@ -54,7 +57,7 @@ if (in_array($domain, $blocked)) {
 $log_dir = __DIR__ . '/../logs';
 if (!is_dir($log_dir)) @mkdir($log_dir, 0750, true);
 $fp = fopen($log_dir . '/contacts.csv', 'a');
-fputcsv($fp, [date('Y-m-d H:i:s'), $nome, $sobrenome, $email, $tel, $msg]);
+fputcsv($fp, [date('Y-m-d H:i:s'), $nome, $sobrenome, $empresa, $email, $tel, $msg, $source]);
 fclose($fp);
 
 // E-mail
@@ -63,8 +66,10 @@ $body  = "Nova mensagem — Fale Conosco (Firewall + IPS)\n\n";
 $body .= "Nome:     $nome $sobrenome\n";
 $body .= "E-mail:   $email\n";
 $body .= "Telefone: $tel\n";
-$body .= "Data:     " . date('d/m/Y H:i:s') . "\n\n";
-$body .= "Mensagem:\n$msg\n";
+$body .= "Origem:   $source\n";
+$body .= "Data:     " . date('d/m/Y H:i:s') . "\n";
+if ($empresa) $body .= "Empresa:  $empresa\n";
+if ($msg) $body .= "\nMensagem:\n$msg\n";
 
 $headers  = "From: Site TYR <contato.tyr@vivasol.com.br>\r\n";
 $email_header = str_replace(["\r", "\n"], '', $email);
